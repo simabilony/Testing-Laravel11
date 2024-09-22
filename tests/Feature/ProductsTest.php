@@ -8,7 +8,7 @@ test('homepage contains empty table', function () {
         ->assertStatus(200)
         ->assertSee(__('No products found'));
 });
-
+// Arrange _ Act _ Assert
 test('homepage contains non empty table', function () {
     Product::create([
         'name'  => 'Product 1',
