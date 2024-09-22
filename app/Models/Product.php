@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use App\Services\CurrencyService;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
+/**
+ * @method static create(array $array)
+ */
 class Product extends Model
 {
     use HasFactory;
