@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Product;
+use Illuminate\Support\Collection;
 use function Pest\Laravel\get;
 
 test('homepage contains empty table', function () {
@@ -15,7 +16,12 @@ test('homepage contains non empty table', function () {
         'price' => 123,
     ]);
 
+    $product = 1;
     get('/products')
         ->assertStatus(200)
-        ->assertDontSee(__('No products found'));
+        ->assertDontSee(__('No products found'))
+    ->assertSee('Product 1')
+        ->assertViewHas('products', function (Collection $collection) use ($product) {
+            return $collection->contains($product);
+        });
 });
